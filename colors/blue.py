@@ -1,9 +1,12 @@
-from blinkstick import blinkstick
+from _device import close_device, find_first, set_all
 
-b = blinkstick.find_first()
+b = find_first()
 
 if b is None:
-    print("No BlinkSticks found...")
+	print("No BlinkSticks found...")
 else:
-    print ("Blue")
-    b.set_color(name="blue")
+	try:
+		print("Blue")
+		set_all(b, name="blue")
+	finally:
+		close_device(b, turn_off=False)

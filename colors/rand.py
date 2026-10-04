@@ -1,5 +1,11 @@
-from blinkstick import blinkstick
+from random import randint
 
-for b in blinkstick.find_all():
-    b.set_random_color()
-    print b.get_info_block1() + " was set to Hex: " + b.get_color(color_format="hex")
+from _device import close_device, find_all, set_all
+
+for b in find_all():
+	try:
+		red, green, blue = (randint(0, 255) for _ in range(3))
+		set_all(b, red=red, green=green, blue=blue)
+		print(f"{b.get_serial()} was set to Hex: #{red:02x}{green:02x}{blue:02x}")
+	finally:
+		close_device(b, turn_off=False)

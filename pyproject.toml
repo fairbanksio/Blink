@@ -1,0 +1,13 @@
+[project]
+name = "blink"
+version = "0.1.0"
+description = "BlinkStick Nano status monitors and LED animations"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+	"blinkstick>=1.2.0",
+	"hidapi>=0.15.0",
+	"kubernetes>=36.0.3",
+	"psutil>=7.2.2",
+	"pyusb>=1.3.1",
+]
