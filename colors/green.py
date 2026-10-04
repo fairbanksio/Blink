@@ -1,10 +1,12 @@
-from blinkstick import blinkstick
-import psutil
+from _device import close_device, find_first, set_all
 
-bstick = blinkstick.find_first()
+bstick = find_first()
 
 if bstick is None:
-    print("No BlinkSticks found...")
+	print("No BlinkSticks found...")
 else:
-    print ("Green")
-    bstick.set_color(name="green")
+	try:
+		print("Green")
+		set_all(bstick, name="green")
+	finally:
+		close_device(bstick, turn_off=False)

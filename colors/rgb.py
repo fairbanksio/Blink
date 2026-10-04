@@ -1,14 +1,17 @@
-from blinkstick import blinkstick
+from _device import close_device, find_first, morph_all
 
-b = blinkstick.find_first()
+b = find_first()
 
 if b is None:
-    print("No BlinkSticks found...")
+	print("No BlinkSticks found...")
 else:
-    print ("Party Time!")
-    
-    #go into a forever loop
-    while True:
-        b.morph(name='red')
-	b.morph(name='green')
-	b.morph(name='blue')
+	try:
+		print("Party Time!")
+		while True:
+			morph_all(b, name="red")
+			morph_all(b, name="green")
+			morph_all(b, name="blue")
+	except KeyboardInterrupt:
+		pass
+	finally:
+		close_device(b)
